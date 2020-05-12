@@ -1,4 +1,0 @@
-#Mon May 11 20:53:12 COT 2020
-base.0=C\:\\Users\\Juan David\\Documents\\GitHub\\ProgrammingTest-EndGame\\Programming Test - End Game\\Temp\\gradleOut\\launcher\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-path.0=classes.dex
-renamed.0=classes.dex

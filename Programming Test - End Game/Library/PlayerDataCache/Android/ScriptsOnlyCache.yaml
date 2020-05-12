@@ -3,16 +3,29 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AimingAid
     - AmmoSettings
+    - AudioManager
+    - AudioSettings
     - DoorManager
     - DoorOpeningUI
+    - Enemy.EnemyAIMovement
+    - Enemy.EnemyAIShooting
+    - Enemy.EnemyAnimationHandler
+    - EnemySettings
+    - GameManager
     - LootBox
+    - MusicAudioClips
+    - Notification
     - Player.Aiming
-    - Player.CharacterAnimationHandler
+    - Player.PlayerAnimationHandler
     - Player.RigidMovement
+    - PlayerCharacter
     - PlayerInventory
     - PlayerInventoryManager
     - PlayerSettings
+    - PlayerStats
     - RoofManager
+    - SFXAudioClips
+    - StatsUI
     - VariableJoystick
     - WeaponSettings
     - Weapons.AutomaticRifle
@@ -43,6 +56,7 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationBlendTree.Node
     - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
@@ -55,6 +69,7 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
@@ -82,11 +97,17 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
@@ -123,6 +144,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12726}
     - Class: 114
+      Script: {instanceID: 12886}
+    - Class: 114
       Script: {instanceID: 12962}
     - Class: 114
       Script: {instanceID: 12992}
@@ -144,8 +167,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13558}
     - Class: 114
       Script: {instanceID: 13648}
-    - Class: 114
-      Script: {instanceID: 13758}
     - Class: 114
       Script: {instanceID: 13836}
     - Class: 114
@@ -172,15 +193,47 @@ ScriptsOnlyBuild:
       Script: {instanceID: 24084}
     - Class: 114
       Script: {instanceID: 53358}
+    - Class: 114
+      Script: {instanceID: 78164}
+    - Class: 114
+      Script: {instanceID: 78172}
+    - Class: 114
+      Script: {instanceID: 78202}
+    - Class: 114
+      Script: {instanceID: 91388}
+    - Class: 114
+      Script: {instanceID: 91404}
+    - Class: 114
+      Script: {instanceID: 91418}
+    - Class: 114
+      Script: {instanceID: 118002}
+    - Class: 114
+      Script: {instanceID: 118012}
+    - Class: 114
+      Script: {instanceID: 215916}
+    - Class: 114
+      Script: {instanceID: 215922}
+    - Class: 114
+      Script: {instanceID: 225594}
+    - Class: 114
+      Script: {instanceID: 236142}
+    - Class: 114
+      Script: {instanceID: 236154}
+    - Class: 114
+      Script: {instanceID: 247056}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
+      Script: {instanceID: 0}
+    - Class: 135
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
     - Class: 137
       Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 195
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
@@ -193,6 +246,8 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 238
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -491,7 +546,7 @@ ScriptsOnlyBuild:
     className: CinemachineFreeLook
   - hash:
       serializedVersion: 2
-      Hash: df1735fb6080a8da0e6ea2a02c7b883c
+      Hash: 25d521ed7f44d4b1ff01e1921bb8f10c
     assemblyName: Assembly-CSharp.dll
     namespaceName: Weapons
     className: AutomaticRifle
@@ -1037,12 +1092,6 @@ ScriptsOnlyBuild:
     className: CinemachineHardLookAt
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Player
-    className: CharacterAnimationHandler
-  - hash:
-      serializedVersion: 2
       Hash: 24517b7a320e701b07af081099455b22
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1271,7 +1320,7 @@ ScriptsOnlyBuild:
     className: PlayerInventoryManager
   - hash:
       serializedVersion: 2
-      Hash: 8cdf420a747d81c77c32a6ae57a39c3b
+      Hash: ca39cf92d51c8d98ca242633a4eb72d2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DoorOpeningUI
@@ -1281,7 +1330,91 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RoofManager
+  - hash:
+      serializedVersion: 2
+      Hash: ef080e975b2f88750a21e49c98e14398
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerStats
+  - hash:
+      serializedVersion: 2
+      Hash: e9893d0af77259d63bcf06285442def1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerCharacter
+  - hash:
+      serializedVersion: 2
+      Hash: e81d92f1e28adf2bc5d88de8f0efe302
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StatsUI
+  - hash:
+      serializedVersion: 2
+      Hash: 7c9f2c91014e89b7b378412ebcc93c6b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Enemy
+    className: EnemyAIMovement
+  - hash:
+      serializedVersion: 2
+      Hash: ad1525a62cf71f6432ff019f46aabfce
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemySettings
+  - hash:
+      serializedVersion: 2
+      Hash: 7c9f2c91014e89b7b378412ebcc93c6b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Enemy
+    className: EnemyAIShooting
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Enemy
+    className: EnemyAnimationHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Player
+    className: PlayerAnimationHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 34cdec9fcc989fc7bc07b72c2a6e3c1e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioManager
+  - hash:
+      serializedVersion: 2
+      Hash: 4b853dde6c398cfd20f4018e366e9f55
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Notification
+  - hash:
+      serializedVersion: 2
+      Hash: e3d0914209f9b48de963cc55eaa37783
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameManager
+  - hash:
+      serializedVersion: 2
+      Hash: b019593de2feb6c5af477bae7b975db5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MusicAudioClips
+  - hash:
+      serializedVersion: 2
+      Hash: 1891fa4670530c0dea4f4bbe5a576a2f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioSettings
+  - hash:
+      serializedVersion: 2
+      Hash: ecc44adb6db700d3fbf712deadc66942
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SFXAudioClips
   platform: 13
   scenePathNames:
   - Assets/Scenes/Game.unity
-  playerPath: C:/Users/Juan David/Desktop/Programming_Test_0.4.apk
+  playerPath: C:/Users/Juan David/Desktop/Programming_Test_0.5.apk

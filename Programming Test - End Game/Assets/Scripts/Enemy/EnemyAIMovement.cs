@@ -10,14 +10,19 @@ namespace Enemy
         [SerializeField] private Transform target = null;
         [SerializeField] private EnemySettings enemySettings;
 
-        //private bool canShoot = false;
+        private EnemyAIShooting shooting = null;
+
         private bool canPursuit = false;
         private bool guard = false;
 
         private float distanceToTarget = 0f;
         private float elapsedTime = 0f;
 
-        private void Awake() => agent = GetComponent<NavMeshAgent>();
+        private void Awake()
+        {
+            agent = GetComponent<NavMeshAgent>();
+            shooting = GetComponent<EnemyAIShooting>();
+        }
 
         private void Update()
         {
@@ -25,11 +30,10 @@ namespace Enemy
             {
                 distanceToTarget = (target.position - transform.position).sqrMagnitude;
                 canPursuit = distanceToTarget <= enemySettings.maxPursuitDistance && distanceToTarget >= enemySettings.shootDistance ? true : false;
-                //canShoot = distanceToTarget <= enemySettings.shootDistance ? true : false;
                 UpdateMovement();
             }
 
-            if (!canPursuit && guard)
+            if (!canPursuit && guard && !shooting.CanShoot)
             {
                 elapsedTime += Time.deltaTime;
                 if (elapsedTime >= enemySettings.guardTime)
@@ -46,7 +50,7 @@ namespace Enemy
                 agent.destination = target.position;
                 agent.isStopped = false;
             }
-            else if (!guard)
+            else if (!guard || shooting.CanShoot)
             {
                 guard = true;
                 agent.speed = 0f;

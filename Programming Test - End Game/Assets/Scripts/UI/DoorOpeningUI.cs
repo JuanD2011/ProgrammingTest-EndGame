@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorOpeningUI : MonoBehaviour
@@ -10,23 +8,8 @@ public class DoorOpeningUI : MonoBehaviour
     [SerializeField] private string keyFoundText = "Key found!";
     [SerializeField] private string keyNotFoundText = "No keys here :(";
 
-    private Transform notification = null;
-    private TextMeshProUGUI notificationText = null;
-
-    [Header("Animation")]
-    [SerializeField] private Vector3 openedScale = Vector3.zero;
-    [SerializeField] private Vector3 closedScale = Vector3.zero;
-    [SerializeField] private LeanTweenType tweenType = LeanTweenType.notUsed;
-    [SerializeField] private float animationTime = 0f;
-    [SerializeField] private float notificationStayTime = 0f;
-
-    private WaitForSeconds timeToHide; 
-
     private void Start()
-    {
-        notification = transform.GetChild(0);
-        notificationText = notification.GetComponentInChildren<TextMeshProUGUI>();
-        timeToHide = new WaitForSeconds(notificationStayTime);
+    {       
         DoorManager.OnDoorOpened += OnDoorOpened;
         PlayerInventoryManager.OnKeyFound += OnKeyFound;
     }
@@ -55,14 +38,7 @@ public class DoorOpeningUI : MonoBehaviour
 
     private void Show(string _text)
     {
-        notificationText.text = _text;
-        notification.gameObject.SetActive(true);
-        notification.LeanScale(openedScale, animationTime).setEase(tweenType).setOnComplete(() => StartCoroutine(Hide()));
-    }
-
-    private IEnumerator Hide()
-    {
-        yield return timeToHide;
-        notification.LeanScale(closedScale, animationTime).setEase(tweenType).setOnComplete(() => notification.gameObject.SetActive(false));
+        Notification.Show(_text);
+        AudioManager.PlaySFX(SFXAudioClips.Instance.successSFX);
     }
 }

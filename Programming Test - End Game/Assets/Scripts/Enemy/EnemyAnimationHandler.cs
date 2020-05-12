@@ -32,15 +32,14 @@ namespace Enemy
 		private void UpdateMovementAnimation()
 		{
 			speed = agent.speed / 2f;
-			Debug.Log(agent.speed);
 			Animator.SetFloat(speedAnimatorHash, speed, 0.25f, Time.deltaTime);
 		}
 
 		private void UpdateShootAnimation()
 		{
-			if (shooting.CanShoot && !Animator.GetBool(shootingAnimatorHash))
+			if (shooting.CanShoot)
 				Animator.SetBool(shootingAnimatorHash, true);
-			else if (!shooting.CanShoot && Animator.GetBool(shootingAnimatorHash))
+			else if (!shooting.CanShoot)
 				Animator.SetBool(shootingAnimatorHash, false);
 		}
 	} 

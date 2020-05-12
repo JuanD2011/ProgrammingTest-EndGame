@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AmmoSettings
   m_EditorClassIdentifier: 
   lifeTime: 1.5
-  rifleAmmoDamage: 3
-  smgAmmoDamage: 2
+  rifleAmmoDamage: 10
+  smgAmmoDamage: 8

@@ -16,4 +16,4 @@ MonoBehaviour:
   weaponPower: 800
   bulletPrefab: {fileID: 5381256111881938843, guid: 60b250a459750fe4caaf8e863dbf621f,
     type: 3}
-  fireSFX: {fileID: 0}
+  fireSFX: {fileID: 8300000, guid: 4d1d8d1080a4b304ba2e40d28ec7c64f, type: 3}
