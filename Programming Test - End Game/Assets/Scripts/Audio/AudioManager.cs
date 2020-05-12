@@ -18,11 +18,14 @@ public class AudioManager : Singleton<AudioManager>
         Instance.musicSource.volume = AudioSettings.Instance.musicVolume;
     }
 
-    public static void PlaySFX(AudioClip _clip)
+    public static void PlaySFX(AudioClip _clip, bool _mayVary)
     {
         if (_clip != null)
         {
-            Instance.sfxSource.pitch = Random.Range(AudioSettings.Instance.pitchVariationRange.x, AudioSettings.Instance.pitchVariationRange.y);
+            if (_mayVary)
+                Instance.sfxSource.pitch = Random.Range(AudioSettings.Instance.pitchVariationRange.x, AudioSettings.Instance.pitchVariationRange.y);
+            else
+                Instance.sfxSource.pitch = 1f;
             Instance.sfxSource.PlayOneShot(_clip); 
         }
     }

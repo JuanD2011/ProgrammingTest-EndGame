@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SFXAudioClips
   m_EditorClassIdentifier: 
   successSFX: {fileID: 8300000, guid: db833ef08141ee44f86fb737d61feba8, type: 3}
+  failSFX: {fileID: 8300000, guid: f92b6dc2009d9f844b8f467fd45d194e, type: 3}

@@ -15,6 +15,6 @@ MonoBehaviour:
   shootDistance: 15
   maxPursuitDistance: 50
   guardWalkRadius: 80
-  guardTime: 8
+  guardTime: 5
   pursuitSpeed: 2
   guardSpeed: 1

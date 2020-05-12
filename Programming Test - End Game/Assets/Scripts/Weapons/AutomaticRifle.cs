@@ -6,6 +6,14 @@ namespace Weapons
 {
     public class AutomaticRifle : Gun
     {
+        protected override void OnAwake()
+        {
+            muzzle = transform.GetChild(0);
+            flashEffect = GetComponentInChildren<ParticleSystem>();
+            bulletPoolName = string.Format("{0} {1}", transform.name, bulletData.poolName);
+            SetAndPopulateBulletPool();
+        }
+
         protected override void OnUpdate()
         {
             if (aim != null)
@@ -62,7 +70,8 @@ namespace Weapons
             bullet.transform.SetParent(null);
             bullet.Rigidbody.AddForce(aim.transform.forward * weaponSettings.weaponPower * Time.deltaTime, ForceMode.Impulse);
 
-            AudioManager.PlaySFX(weaponSettings.fireSFX);
+            AudioManager.PlaySFX(weaponSettings.fireSFX, true);
+            flashEffect.Play();
 
             shot = true;
         }
@@ -73,16 +82,10 @@ namespace Weapons
             bullet.transform.SetParent(null);
             bullet.Rigidbody.AddForce(enemyShooting.transform.forward * weaponSettings.weaponPower * Time.deltaTime, ForceMode.Impulse);
             
-            AudioManager.PlaySFX(weaponSettings.fireSFX);
+            AudioManager.PlaySFX(weaponSettings.fireSFX, true);
+            flashEffect.Play();
 
             shot = true;
-        }
-
-        protected override void OnAwake() 
-        {
-            muzzle = transform.GetChild(0);
-            bulletPoolName = string.Format("{0} {1}", transform.name, bulletData.poolName);
-            SetAndPopulateBulletPool();
         }
 
         protected override void SetAndPopulateBulletPool()

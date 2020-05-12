@@ -31,14 +31,16 @@ public class DoorOpeningUI : MonoBehaviour
     private void OnDoorOpened(bool _value)
     {
         if (_value)
+        {
             Show(doorOpenedText);
+            AudioManager.PlaySFX(SFXAudioClips.Instance.successSFX, false);
+        }
         else
+        {
             Show(cantOpenText);
+            AudioManager.PlaySFX(SFXAudioClips.Instance.failSFX, false);
+        }
     }
 
-    private void Show(string _text)
-    {
-        Notification.Show(_text);
-        AudioManager.PlaySFX(SFXAudioClips.Instance.successSFX);
-    }
+    private void Show(string _text) => Notification.Show(_text);
 }

@@ -23,6 +23,8 @@ namespace Weapons
 
         [SerializeField] private Animator animator = null;
 
+        protected ParticleSystem flashEffect = null;
+
         private void Awake()
         {
             bulletData = weaponSettings.bulletPrefab.GetComponent<Bullet>().BulletData;
