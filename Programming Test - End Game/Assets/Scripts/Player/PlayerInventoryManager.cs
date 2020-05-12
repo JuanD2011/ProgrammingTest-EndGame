@@ -9,7 +9,7 @@ public class PlayerInventoryManager : MonoBehaviour
 
     public PlayerInventory Inventory { get => inventory; private set => inventory = value; }
 
-    public event Action<List<Key>> OnKeyFound = null;
+    public static event Action<List<Key>> OnKeyFound = null;
 
     private void OnCollisionEnter(Collision collision)
     {

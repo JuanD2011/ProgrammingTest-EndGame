@@ -5,4 +5,9 @@ using System.Collections.Generic;
 public class PlayerInventory : ScriptableObject
 {
     public List<Key> keys;
+
+    public void ResetInventory()
+    {
+        keys.Clear();
+    }
 }

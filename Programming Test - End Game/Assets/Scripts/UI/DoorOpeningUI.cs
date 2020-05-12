@@ -1,11 +1,14 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class DoorOpeningUI : MonoBehaviour
 {
-    private string doorOpenedText = "Door opened!";
-    private string cantOpenText = "You don't have the correct key\n Go find it in loot boxes";
+    [SerializeField] private string doorOpenedText = "Door opened!";
+    [SerializeField] private string cantOpenText = "You don't have the correct key\n Go find it in loot boxes";
+    [SerializeField] private string keyFoundText = "Key found!";
+    [SerializeField] private string keyNotFoundText = "No keys here :(";
 
     private Transform notification = null;
     private TextMeshProUGUI notificationText = null;
@@ -25,11 +28,21 @@ public class DoorOpeningUI : MonoBehaviour
         notificationText = notification.GetComponentInChildren<TextMeshProUGUI>();
         timeToHide = new WaitForSeconds(notificationStayTime);
         DoorManager.OnDoorOpened += OnDoorOpened;
+        PlayerInventoryManager.OnKeyFound += OnKeyFound;
     }
 
     private void OnDestroy()
     {
         DoorManager.OnDoorOpened -= OnDoorOpened;
+        PlayerInventoryManager.OnKeyFound -= OnKeyFound;
+    }
+
+    private void OnKeyFound(List<Key> obj)
+    {
+        if (obj.Count > 0)
+            Show(keyFoundText);
+        else
+            Show(keyNotFoundText);
     }
 
     private void OnDoorOpened(bool _value)

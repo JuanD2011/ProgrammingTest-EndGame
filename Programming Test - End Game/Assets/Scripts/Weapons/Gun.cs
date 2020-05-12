@@ -9,6 +9,7 @@ namespace Weapons
     {
         [SerializeField] protected WeaponSettings weaponSettings = null;
         [SerializeField] protected Aiming aim = null;
+        [SerializeField] protected Enemy.EnemyAnimationHandler enemyAnimationHandler = null;
 
         protected bool shot = true;
         protected bool canShoot = false;
@@ -32,8 +33,7 @@ namespace Weapons
 
         private void Start()
         {
-            animator = aim.gameObject.GetComponent<CharacterAnimationHandler>().Animator;
-            
+            animator = aim.gameObject.GetComponent<PlayerAnimationHandler>().Animator;
         }
 
         protected void Update()
